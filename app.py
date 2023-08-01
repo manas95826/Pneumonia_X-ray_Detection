@@ -16,7 +16,7 @@ def teachable_machine_classificattion(img):
     data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
 
 # Replace this with the path to your image
-    image = Image.open("C:/Users/Lenovo/OneDrive/Desktop/archive (1)/chest_xray/test/PNEUMONIA/BACTERIA-40699-0001.jpeg").convert("RGB")
+    image = Image.open("NORMAL-1212407-0001.jpeg").convert("RGB")
 
 
 # resizing the image to be at least 224x224 and then cropping from the center
