@@ -3,7 +3,7 @@ from PIL import Image, ImageOps
 import numpy as np
 import streamlit as st
 
-model = load_model("keras_Model.h5", compile=False)
+model = load_model("keras_model.h5", compile=False)
 
 file = st.file_uploader('Upload an image file')
 
