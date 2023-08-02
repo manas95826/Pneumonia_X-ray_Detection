@@ -39,7 +39,7 @@ def main():
         for class_index, class_probability in enumerate(probabilities):
             # Normalize the probability between 0 and 1
             class_probability = class_probability / np.sum(probabilities)
-            st.write(f"Class {class_index}: Probability: {class_probability:.2f}")
+            # st.write(f"Class {class_index}: Probability: {class_probability:.2f}")
     else:
         st.write("Please upload an image.")
 
