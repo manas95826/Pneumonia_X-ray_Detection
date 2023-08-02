@@ -9,9 +9,6 @@ model = load_model("keras_model.h5", compile=False)
 # Class names for classification
 class_names = ["1", "0"]
 
-# Placeholder for confidence scores
-confidence_scores = None
-
 # Streamlit UI code
 def main():
     st.title("Image Classification")
@@ -20,6 +17,9 @@ def main():
 
     # File upload widget
     file = st.file_uploader('Upload an image file')
+
+    # Placeholder for confidence scores
+    confidence_scores = None
 
     # Main prediction logic
     if file is not None:
