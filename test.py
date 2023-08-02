@@ -8,7 +8,7 @@ model = load_model("keras_model.h5", compile=False)
 
 # Streamlit UI code
 def main():
-    st.title("Image Classification")
+    st.title("Image Classify")
     st.header("Pneumonia X-Ray Classification")
     st.text("Upload a Pneumonia X-Ray for classification")
 
