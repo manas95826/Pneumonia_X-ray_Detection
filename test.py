@@ -17,7 +17,7 @@ def main():
         img = Image.open(file)
         
         # Check if the image is in RGB format
-        if img.mode == "RGB":
+        if img.mode != "L":
             st.warning("Please re-upload the X-ray file only")
             return
 
