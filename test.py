@@ -41,9 +41,11 @@ def main():
         st.subheader("Prediction Result:")
         st.image(image, use_column_width=True, caption="Uploaded Image")
         
-        for i, class_name in enumerate(class_names):
-            # st.write(f"Class: {class_name}")
-            st.write(f"Probability: {confidence_scores[i]:.2f}")
+        if confidence_score==1:
+            st.write("Pneumonia Found")
+        else :
+            st.write("No Pneumonia,take a chill pill")
+
 
 
 if __name__ == "__main__":
