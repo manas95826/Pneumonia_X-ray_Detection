@@ -5,9 +5,7 @@ import streamlit as st
 
 model = load_model("keras_model.h5", compile=False)
 
-class_names = ["1", "0"]
-
-confidence_score = None
+class_names = ["0", "1"]  # Make sure the class names match the order in your model
 
 def main():
     st.title("Image Classification")
@@ -33,11 +31,12 @@ def main():
 
         # Predict the model
         confidence_score = model.predict(data)
-        if confidence_score is not None:
-            if confidence_score == 1:
-                st.success(f"Pneumonia found!")
-            else:
-                st.error("No Pneumonia Found")
+        predicted_class = np.argmax(confidence_score)
+
+        if predicted_class == 1:
+            st.success("Pneumonia found!")
+        else:
+            st.error("No Pneumonia Found.")
 
 if __name__ == "__main__":
     main()
