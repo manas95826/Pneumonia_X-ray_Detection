@@ -42,13 +42,8 @@ def main():
         st.image(image, use_column_width=True, caption="Uploaded Image")
         
         for i, class_name in enumerate(class_names):
-            st.write(f"Class: {class_name}")
+            # st.write(f"Class: {class_name}")
             st.write(f"Probability: {confidence_scores[i]:.2f}")
-            if class_name == "1":
-                if confidence_scores[i] >= 0.3:
-                    st.error("Pneumonia Found")
-                else:
-                    st.success("No Pneumonia Found")
 
 
 if __name__ == "__main__":
