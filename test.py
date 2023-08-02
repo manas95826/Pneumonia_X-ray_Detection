@@ -6,9 +6,6 @@ import streamlit as st
 # Load the Keras model
 model = load_model("keras_model.h5", compile=False)
 
-# Class names for classification
-class_names = ["1", "0"]
-
 # Streamlit UI code
 def main():
     st.title("Image Classification")
@@ -17,9 +14,6 @@ def main():
 
     # File upload widget
     file = st.file_uploader('Upload an image file')
-
-    # Placeholder for confidence scores
-    confidence_scores = None
 
     # Main prediction logic
     if file is not None:
@@ -36,15 +30,14 @@ def main():
 
         # Predict using the model
         prediction = model.predict(data)
-        confidence_scores = prediction[0]
+        probabilities = prediction[0]  # Probabilities for each class
 
         # Display prediction result
         st.subheader("Prediction Result:")
         st.image(image, use_column_width=True, caption="Uploaded Image")
 
-        for i, class_name in enumerate(class_names):
-            st.write(f"Class: {class_name}")
-            st.write(f"Probability: {confidence_scores[i]:.2f}")
+        for class_index, class_probability in enumerate(probabilities):
+            st.write(f"Class {class_index}: Probability: {class_probability:.2f}")
     else:
         st.write("Please upload an image.")
 
