@@ -18,7 +18,7 @@ def main():
         
         # Check if the image is in RGB format
         if img.mode == "RGB":
-            st.warning("Please re-upload the X-ray file in RGB format.")
+            st.warning("Please re-upload the X-ray file only")
             return
 
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
