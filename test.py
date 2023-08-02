@@ -45,7 +45,7 @@ def main():
             st.write(f"Class: {class_name}")
             st.write(f"Probability: {confidence_scores[i]:.2f}")
             if class_name == "1":
-                if confidence_scores[i] >= 0.5:
+                if confidence_scores[i] >= 0.3:
                     st.error("Pneumonia Found")
                 else:
                     st.success("No Pneumonia Found")
