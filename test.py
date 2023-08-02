@@ -32,10 +32,7 @@ def main():
         data[0] = normalized_image_array
 
         # Predict the model
-        prediction = model.predict(data)
-        index = np.argmax(prediction)
-        class_name = class_names[index]
-        confidence_score = prediction[0][index]
+        confidence_score = model.predict(data)
         if confidence_score is not None:
             if confidence_score == 1:
                 st.success(f"Pneumonia found!")
