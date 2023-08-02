@@ -14,8 +14,14 @@ def main():
     
     file = st.file_uploader('Upload an image file')
     if file is not None:
-        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         img = Image.open(file)
+        
+        # Check if the image is in RGB format
+        if img.mode != "RGB":
+            st.warning("Please re-upload the X-ray file in RGB format.")
+            return
+
+        data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         img = img.convert('RGB')  # Convert to RGB mode to ensure 3 channels
         size = (224, 224)
         image = ImageOps.fit(img, size, Image.Resampling.LANCZOS)
