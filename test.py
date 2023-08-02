@@ -19,7 +19,7 @@ def main():
     if file is not None:
         data = np.ndarray(shape=(1, 224, 224, 3), dtype=np.float32)
         img = Image.open(file)
-        img = img.convert('RGB')
+        # img = img.convert('RGB')
         size = (224, 224)
         image = ImageOps.fit(img, size, Image.Resampling.LANCZOS)
 
@@ -30,18 +30,24 @@ def main():
 
         # Predict using the model
         prediction = model.predict(data)
+        probability = model.predict_proba(data)
         probabilities = prediction[0]  # Probabilities for each class
 
         # Display prediction result
         st.subheader("Prediction Result:")
         st.image(image, use_column_width=True, caption="Uploaded Image")
-
-        for class_index, class_probability in enumerate(probabilities):
-            # Normalize the probability between 0 and 1
-            class_probability = class_probability / np.sum(probabilities)
-            st.write(f"Class {class_index}: Probability: {class_probability:.2f}")
-    else:
-        st.write("Please upload an image.")
+        if (probabilities==1):
+            st.write("Pneumonia Found!")
+            st.write("The probability is:" , probability)
+        else :
+            st.write("Pneumonia Not Found.")
+            st.write("The probability is:" , probability)
+        # for class_index, class_probability in enumerate(probabilities):
+        #     # Normalize the probability between 0 and 1
+        #     class_probability = class_probability / np.sum(probabilities)
+        #     st.write(f"Class {class_index}: Probability: {class_probability:.2f}")
+    # else:
+    #     st.write("Please upload an image.")
 
 # Run the Streamlit app
 if __name__ == "__main__":
