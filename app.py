@@ -12,7 +12,7 @@ def main():
     st.header("Pneumonia X-Ray Classification")
     st.text("Upload a Pneumonia X-Ray for classification")
     
-    file = st.file_uploader('Upload an image file', type=["jpg", "jpeg"],accept_multiple_files=True)
+    file = st.file_uploader('Upload an image file', type=["jpg", "jpeg"])
     if file is not None:
         img = Image.open(file)
         
